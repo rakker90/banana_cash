@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🍌 BANANA</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif;}
+  body{
+    background:url('https://static5.tgstat.ru/channels/_0/43/43a2a76d7bdf49f9f8a449093aa196da.jpg') center/cover no-repeat;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    transition:background 1s ease-in-out;
+    overflow:hidden;
+  }
+
+  .container{
+    text-align:center;
+    color:white;
+    backdrop-filter:blur(10px);
+    background:rgba(255,255,255,0.1);
+    padding:10vw;
+    border-radius:20px;
+    box-shadow:0 4px 20px rgba(0,0,0,0.25);
+    width:85%;
+    max-width:400px;
+    transition:transform .4s;
+  }
+
+  h1{font-size:clamp(22px,6vw,32px);margin-bottom:25px;}
+
+  button{
+    padding:14px 35px;
+    border:none;
+    border-radius:30px;
+    background:rgba(255,255,255,0.25);
+    color:white;
+    font-size:clamp(16px,4vw,18px);
+    cursor:pointer;
+    transition:.3s;
+    box-shadow:0 4px 15px rgba(255,255,255,0.2);
+  }
+
+  button:hover{
+    transform:scale(1.05);
+    background:rgba(255,255,255,0.35);
+  }
+
+  .profile{
+    position:fixed;
+    top:10px;
+    left:10px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(15px);
+    border-radius:16px;
+    padding:6px 10px;
+    color:white;
+    border:1px solid rgba(255,255,255,0.2);
+    opacity:0;
+    transform:translateY(-20px);
+    transition:all .5s ease;
+  }
+
+  .profile.show{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  .profile img{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    border:2px solid rgba(255,255,255,0.4);
+  }
+
+  /* 🔹 Pastki 5 ta tugma — barchasi 1 qatorda */
+  .bottom-buttons {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 20;
+    width: 95%;
+    max-width: 430px;
+  }
+
+  .glass-btn {
+    flex: 1;
+    margin: 0 5px;
+    height: 65px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 18px;
+    color: white;
+    font-size: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.25s ease;
+    text-align:center;
+  }
+
+  .glass-btn span {
+    font-size: 13px;
+    margin-top: 4px;
+  }
+
+  .glass-btn:hover {
+    transform: scale(1.06);
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  @media (max-width: 360px) {
+    .glass-btn {
+      height: 55px;
+      font-size: 18px;
+    }
+    .glass-btn span {font-size: 11px;}
+  }
+</style>
+</head>
+<body>
+  <div class="container" id="welcome">
+    <h1>🍌 BANANA ga xush kelibsiz!</h1>
+    <button id="startBtn">Boshlash</button>
+  </div>
+
+  <div class="profile" id="profile">
+    <img src="https://cdn-icons-png.flaticon.com/512/147/147144.png" alt="Profil">
+    <div>
+      <span class="balance">💰 Balans: 15 200 so'm</span><br>
+      <span class="level">🏅 Level: 3</span>
+    </div>
+  </div>
+
+  <!-- 🔸 Pastki 5 ta shaffof tugma 1 qatorda -->
+  <div class="bottom-buttons" id="bottomButtons" style="display:none;">
+    <div class="glass-btn">👥<span>Dost</span></div>
+    <div class="glass-btn">📋<span>Vazifalar</span></div>
+    <div class="glass-btn">🖱️<span>Bosish</span></div>
+    <div class="glass-btn">🚀<span>Kuchaytir</span></div>
+    <div class="glass-btn">💳<span>Yechish</span></div>
+  </div>
+
+<script>
+const startBtn = document.getElementById('startBtn');
+const welcome = document.getElementById('welcome');
+const profile = document.getElementById('profile');
+const bottomButtons = document.getElementById('bottomButtons');
+
+startBtn.addEventListener('click', () => {
+  document.body.style.background = "url('https://e0.pxfuel.com/wallpapers/394/298/desktop-wallpaper-enchanted-forest-for-mobile-enchanted-sky.jpg') center/cover no-repeat";
+  welcome.style.transform = 'scale(1.2)';
+  setTimeout(() => {
+    welcome.style.display = 'none';
+    profile.classList.add('show');
+    bottomButtons.style.display = 'flex';
+  }, 400);
+});
+</script>
+</body>
+</html>
