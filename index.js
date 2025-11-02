@@ -8,7 +8,7 @@ bot.start((ctx) => {
 
   const message = `
 👋 Salom, ${user}!
-🍋 <b>BANANA CASH</b> ga xush kelibsiz!
+🍌 <b>BANANA CASH</b> ga xush kelibsiz!
 
 🤯 Pul ishlashning <b>zamonaviy Telegram avlodi</b> sizni kutmoqda.
 💳 Qulay to‘ldirish — hech qanday murakkabliksiz!
@@ -22,15 +22,10 @@ bot.start((ctx) => {
     ...Markup.inlineKeyboard([
       [
         Markup.button.url('📢 Telegram kanal', 'https://t.me/banana_cash_community'),
-        Markup.button.callback('🎮 O‘ynash', 'play')
+        Markup.button.url('🎮 O‘ynash', 'https://rakker90.github.io/banana_cash/')
       ]
     ])
   });
-});
-
-bot.action('play', (ctx) => {
-  ctx.answerCbQuery();
-  ctx.reply('🎯 O‘yin boshlanmoqda... (bu yerda keyingi qadamni qo‘shamiz)');
 });
 
 bot.launch();
