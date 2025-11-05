@@ -1,1 +1,24 @@
 
+{
+  "name": "banana-cash-bot",
+  "version": "1.0.0",
+  "description": "Telegram uchun Banana Cash bot",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "telegram",
+    "bot",
+    "banana",
+    "cash",
+    "telegraf"
+  ],
+  "author": "Temurbek Ulashmurodov",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "telegraf": "^4.15.0"
+  }
+}
