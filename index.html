@@ -2,7 +2,7 @@
 <html lang="uz">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>🍌 BANANA</title>
 <style>
   *{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif;}
@@ -138,7 +138,7 @@
   </div>
 
   <div class="profile" id="profile">
-    <img src="https://cdn-icons-png.flaticon.com/512/147/147144.png" alt="Profil">
+    <img src="https://cdn-icons-png.flaticon.com/512/147/147144.png" alt="Profil" id="userPhoto">
     <div>
       <span class="balance">💰 Balans: 15 200 so'm</span><br>
       <span class="level">🏅 Level: 3</span>
@@ -154,18 +154,41 @@
   </div>
 
 <script>
+// Telegram WebApp ma’lumotlarini olish
+const tg = window.Telegram.WebApp;
+
+// Elementlar
 const startBtn = document.getElementById('startBtn');
 const welcome = document.getElementById('welcome');
 const profile = document.getElementById('profile');
 const bottomButtons = document.getElementById('bottomButtons');
+const userPhoto = document.getElementById('userPhoto');
 
-startBtn.addEventListener('click', () => {
+// Boshlash tugmasi bosilganda
+startBtn.addEventListener('click', async () => {
   document.body.style.background = "url('https://e0.pxfuel.com/wallpapers/394/298/desktop-wallpaper-enchanted-forest-for-mobile-enchanted-sky.jpg') center/cover no-repeat";
   welcome.style.transform = 'scale(1.2)';
-  setTimeout(() => {
+  
+  setTimeout(async () => {
     welcome.style.display = 'none';
     profile.classList.add('show');
     bottomButtons.style.display = 'flex';
+
+    // Foydalanuvchi ID sini olish
+    const user = tg.initDataUnsafe?.user;
+    if (user) {
+      console.log("Foydalanuvchi:", user);
+      // Profil rasmi backend orqali olish
+      try {
+        const res = await fetch(`https://your-server-url.vercel.app/user/${user.id}`);
+        const data = await res.json();
+        if (data.ok && data.photoUrl) {
+          userPhoto.src = data.photoUrl;
+        }
+      } catch (err) {
+        console.error("Rasmni olishda xato:", err);
+      }
+    }
   }, 400);
 });
 </script>

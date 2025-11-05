@@ -22,7 +22,7 @@ bot.start((ctx) => {
     ...Markup.inlineKeyboard([
       [
         Markup.button.url('📢 Telegram kanal', 'https://t.me/banana_cash_community'),
-        Markup.button.url('🎮 O‘ynash', 'https://rakker90.github.io/banana_cash/')
+        Markup.button.url('🎮 O‘ynash', 'https://t.me/Banan_cash_bot/Banana_cash')
       ]
     ])
   });
