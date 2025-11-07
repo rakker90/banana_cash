@@ -3,194 +3,163 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🍌 BANANA</title>
+<title>🍌 Banana Cash</title>
 <style>
-  *{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif;}
-  body{
-    background:url('https://static5.tgstat.ru/channels/_0/43/43a2a76d7bdf49f9f8a449093aa196da.jpg') center/cover no-repeat;
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-direction:column;
-    transition:background 1s ease-in-out;
-    overflow:hidden;
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
   }
 
-  .container{
-    text-align:center;
-    color:white;
-    backdrop-filter:blur(10px);
-    background:rgba(255,255,255,0.1);
-    padding:10vw;
-    border-radius:20px;
-    box-shadow:0 4px 20px rgba(0,0,0,0.25);
-    width:85%;
-    max-width:400px;
-    transition:transform .4s;
-  }
-
-  h1{font-size:clamp(22px,6vw,32px);margin-bottom:25px;}
-
-  button{
-    padding:14px 35px;
-    border:none;
-    border-radius:30px;
-    background:rgba(255,255,255,0.25);
-    color:white;
-    font-size:clamp(16px,4vw,18px);
-    cursor:pointer;
-    transition:.3s;
-    box-shadow:0 4px 15px rgba(255,255,255,0.2);
-  }
-
-  button:hover{
-    transform:scale(1.05);
-    background:rgba(255,255,255,0.35);
-  }
-
-  .profile{
-    position:fixed;
-    top:10px;
-    left:10px;
-    display:flex;
-    align-items:center;
-    gap:8px;
-    background:rgba(255,255,255,0.12);
-    backdrop-filter:blur(15px);
-    border-radius:16px;
-    padding:6px 10px;
-    color:white;
-    border:1px solid rgba(255,255,255,0.2);
-    opacity:0;
-    transform:translateY(-20px);
-    transition:all .5s ease;
-  }
-
-  .profile.show{
-    opacity:1;
-    transform:translateY(0);
-  }
-
-  .profile img{
-    width:38px;
-    height:38px;
-    border-radius:50%;
-    border:2px solid rgba(255,255,255,0.4);
-  }
-
-  .bottom-buttons {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 20;
-    width: 95%;
-    max-width: 430px;
-  }
-
-  .glass-btn {
-    flex: 1;
-    margin: 0 5px;
-    height: 65px;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 18px;
+  body {
+    background: #000;
     color: white;
-    font-size: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* Yuqori qism */
+  .header {
+    text-align: center;
+    padding: 15px;
+  }
+
+  .header h2 {
+    color: #d6b8ff;
+  }
+
+  .stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+  }
+
+  .stats div {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+  }
+
+  /* Banancha */
+  .banana-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    transition: all 0.25s ease;
-    text-align:center;
   }
 
-  .glass-btn span {
-    font-size: 13px;
-    margin-top: 4px;
+  .banana img {
+    width: 160px;
+    transition: transform 0.4s ease;
   }
 
-  .glass-btn:hover {
-    transform: scale(1.06);
-    background: rgba(255, 255, 255, 0.3);
+  .banana img:hover {
+    transform: scale(1.1);
   }
 
-  @media (max-width: 360px) {
-    .glass-btn {
-      height: 55px;
-      font-size: 18px;
-    }
-    .glass-btn span {font-size: 11px;}
+  .progress {
+    width: 80%;
+    height: 8px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    margin-top: 20px;
+    overflow: hidden;
   }
+
+  .progress-bar {
+    width: 4%;
+    height: 100%;
+    background: linear-gradient(90deg, #FFD700, #FFB300);
+    transition: width 0.3s ease;
+  }
+
+  /* Pastki oynali menyu */
+  .bottom-menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .menu-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    transition: transform 0.2s;
+  }
+
+  .menu-btn:hover {
+    transform: scale(1.15);
+  }
+
+  .menu-btn img {
+    width: 26px;
+    opacity: 0.9;
+  }
+
 </style>
 </head>
 <body>
-  <div class="container" id="welcome">
-    <h1>🍌 BANANA ga xush kelibsiz!</h1>
-    <button id="startBtn">Boshlash</button>
-  </div>
 
-  <div class="profile" id="profile">
-    <img src="https://cdn-icons-png.flaticon.com/512/147/147144.png" alt="Profil" id="userPhoto">
-    <div>
-      <span class="balance">💰 Balans: 15 200 so'm</span><br>
-      <span class="level">🏅 Level: 3</span>
+  <div class="header">
+    <h2>🍌 Xush kelibsiz, Banana Boy!</h2>
+    <div class="stats">
+      <div>
+        <b>Joriy balans:</b> 7,580 S
+      </div>
+      <div>
+        <b>Daraja:</b> 1
+      </div>
     </div>
   </div>
 
-  <div class="bottom-buttons" id="bottomButtons" style="display:none;">
-    <div class="glass-btn">👥<span>Dost</span></div>
-    <div class="glass-btn">📋<span>Vazifalar</span></div>
-    <div class="glass-btn">🖱️<span>Bosish</span></div>
-    <div class="glass-btn">🚀<span>Kuchaytir</span></div>
-    <div class="glass-btn">💳<span>Yechish</span></div>
+  <div class="banana-container">
+    <div class="banana">
+      <img src="https://pngimg.com/d/banana_PNG844.png" alt="banana">
+    </div>
+    <div class="progress">
+      <div class="progress-bar"></div>
+    </div>
+    <p style="margin-top:10px;">4.00%</p>
   </div>
 
-<script>
-// Telegram WebApp ma’lumotlarini olish
-const tg = window.Telegram.WebApp;
+  <div class="bottom-menu">
+    <a href="#" class="menu-btn">
+      <img src="https://img.icons8.com/ios-filled/50/friends.png" alt="">
+      Do‘st
+    </a>
+    <a href="#" class="menu-btn">
+      <img src="https://img.icons8.com/ios-filled/50/task.png" alt="">
+      Vazifalar
+    </a>
+    <a href="#" class="menu-btn">
+      <img src="https://img.icons8.com/ios-filled/50/coin-wallet.png" alt="">
+      Bosish
+    </a>
+    <a href="#" class="menu-btn">
+      <img src="https://img.icons8.com/ios-filled/50/rocket.png" alt="">
+      Kuchaytirish
+    </a>
+    <a href="#" class="menu-btn">
+      <img src="https://img.icons8.com/ios-filled/50/money-bag.png" alt="">
+      Yechish
+    </a>
+  </div>
 
-// Elementlar
-const startBtn = document.getElementById('startBtn');
-const welcome = document.getElementById('welcome');
-const profile = document.getElementById('profile');
-const bottomButtons = document.getElementById('bottomButtons');
-const userPhoto = document.getElementById('userPhoto');
-
-// Boshlash tugmasi bosilganda
-startBtn.addEventListener('click', async () => {
-  document.body.style.background = "url('https://e0.pxfuel.com/wallpapers/394/298/desktop-wallpaper-enchanted-forest-for-mobile-enchanted-sky.jpg') center/cover no-repeat";
-  welcome.style.transform = 'scale(1.2)';
-  
-  setTimeout(async () => {
-    welcome.style.display = 'none';
-    profile.classList.add('show');
-    bottomButtons.style.display = 'flex';
-
-    // Foydalanuvchi ID sini olish
-    const user = tg.initDataUnsafe?.user;
-    if (user) {
-      console.log("Foydalanuvchi:", user);
-      // Profil rasmi backend orqali olish
-      try {
-        const res = await fetch(`https://your-server-url.vercel.app/user/${user.id}`);
-        const data = await res.json();
-        if (data.ok && data.photoUrl) {
-          userPhoto.src = data.photoUrl;
-        }
-      } catch (err) {
-        console.error("Rasmni olishda xato:", err);
-      }
-    }
-  }, 400);
-});
-</script>
 </body>
 </html>
